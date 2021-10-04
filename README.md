@@ -1,2 +1,2 @@
 # Hundo
-Print out 100 numbers to this page
+Print out 100 numbers to the page
