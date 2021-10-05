@@ -1,16 +1,12 @@
-function displayMessage() {
-    let msg = ""
+function displayHundo() {
 
-    msg = document.getElementById("message").value;
+    let startValue = 0;
+    let endValue = 100;
 
-    alert(msg);
-}
+    //get the numbers from the UI
+    startValue = document.getElementById("startValue").value;
+    endValue = document.getElementById("endValue").value;
 
-function displayMessage2() {
-    let msg = "";
-
-    msg = document.getElementById("message").value;
-
-    Swal.fire(msg);
-
+    //alert the user
+    alert("start value =" + startValue + " End Value =" + endValue);
 }
