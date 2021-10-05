@@ -67,3 +67,10 @@ footer .social>a:hover {
     bottom: 0;
     width: 100%;
 }
+
+/* display for even numbers in hundo*/
+.evenDisplay {
+    font-weight: bolder;
+    color: red;
+    /*replace this with brand brick red*/
+}
