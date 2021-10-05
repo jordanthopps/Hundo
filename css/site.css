@@ -1,6 +1,6 @@
 :root {
     --primary-color: #001e43;
-    --secondary-color: #ff993b;
+    --secondary-color: #FCE38A;
     --dark-color: #292929;
     --white-color: #dfe3e4;
 }
@@ -40,12 +40,12 @@ footer .social>a:hover {
 }
 
 .jsicon {
-    color: yellow;
+    color: rgb(247, 223, 30)
 }
 
 /*Color correct this with the website*/
 .bsicon {
-    color: purple;
+    color: #553C7B;
 }
 
 .html5icon {
