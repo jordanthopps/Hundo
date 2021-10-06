@@ -54,7 +54,7 @@ function displayNumbers(numbers) {
     // 0, 1, 2, 3, 4, 5, ....
     let startValue = numbers[0];
     let endIndex = numbers.length;
-    let tableBody = document.getElementById("results");
+    let tableBody = document.getElementById("results"); //unclear
     //clear out previous entries from the form:
     tableBody.innerHTML = "";
     for (let index = 0; index < endIndex; index++) {
