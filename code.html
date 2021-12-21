@@ -44,10 +44,7 @@
                         <a class="nav-link active" aria-current="page" href="/code.html">The Code</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">The Repo</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" target="_blank" href="#">About</a>
+                        <a class="nav-link" href="https://github.com/jordanthopps/Hundo" target="_blank">The Repo</a>
                     </li>
                 </ul>
             </div>
@@ -61,32 +58,93 @@
         <div class="container col-xxl-8 px-4 py-5 mt-5">
             <h1 class="border-bottom border-dark border-1">The Code</h1>
             <div class="row">
-                <div class="col-lg-8 col-sm-12">
+                <div class="col-sm-12">
                     <pre class="line-numbers"><code class="language-js">
-                        function displayMessage() {
-                            let msg = ""
+                        function getNumbers() {
+
+                            let startValue = 1;
+                            let endValue = 100;
                         
-                            msg = document.getElementById("message").value;
+                            //get the numbers from the UI
+                            startValue = document.getElementById("startValue").value;
+                            endValue = document.getElementById("endValue").value;
                         
-                            alert(msg);
+                            //convert the numbers to integers or whole numbers
+                            // 33.5 and 100.7
+                            startValue = parseInt(startValue);
+                            endValue = parseInt(endValue);
+                        
+                            //check to see if they are numbers
+                            //Use case: 33 and Davis = True and False = False
+                            //0 and 100 - TRUE AND TRUE = TRUE
+                            //Bobby and 100 - FALSE AND TRUE = False
+                            //We might want to limit the starting balue and ending value | Come back to this
+                        
+                            if (Number.isInteger(startValue) && Number.isInteger(endValue)) {
+                                //when true because both numbers are integers
+                                //get the numbers from the start value to the endvalue
+                                let numbers = generateNumbers(startValue, endValue);
+                        
+                                //get the numbers on the page
+                                displayNumbers(numbers)
+                            } else {
+                                alert("Please enter a number from 1 - 100. Non-integer numbers will be rounded down to the nearest whole integer.")
+                            }
                         }
                         
-                        function displayMessage2() {
-                            let msg = "";
+                        //generate numbers from startvalue to endvalue
+                        function generateNumbers(startValue, endValue) {
+                            let numbers = [];
                         
-                            msg = document.getElementById("message").value;
+                            //Loop over the numbers until we hit the end value
+                            for (let index = startValue; index <= endValue; index++) {
                         
-                            Swal.fire(msg);
+                                //Add each number to the array
+                                numbers.push(index);
                         
+                            }
+                            //return the array of numbers
+                            return numbers;
+                        }
+                        
+                        //display the numbers to the page
+                        function displayNumbers(numbers) {
+                        
+                            //0 first index value
+                            //99 last index value
+                            //length = 100
+                            // 0, 1, 2, 3, 4, 5, ....
+                            let startValue = numbers[0];
+                            let endIndex = numbers.length;
+                            let tableBody = document.getElementById("results"); //unclear
+                            //clear out previous entries from the form:
+                            tableBody.innerHTML = "";
+                            for (let index = 0; index < endIndex; index++) {
+                        
+                                //get the actual number
+                                let number = numbers[index];
+                        
+                                if (number % 2 == 0) {
+                                    //the number is even
+                                    tableRow = `<tr><td class="evenDisplay">${number}</td></tr>`;
+                                } else {
+                                    //the number is odd
+                                    tableRow = `<tr><td>${number}</td></tr>`;
+                                }
+                        
+                        
+                        
+                                tableBody.innerHTML += tableRow;
+                            }
                         }
                     </code>
                     </pre>
                 </div>
-                <div class="col-lg-4 col-sm-12">
+                <!-- <div class="col-lg-4 col-sm-12">
                     <p>The code is structured in one function.</p>
                     <h5>getValues</h5>
                     <p>Prints out your message!</p>
-                </div>
+                </div> -->
             </div>
         </div>
     </main>
@@ -98,7 +156,7 @@
                 <div
                     class="col d-flex order-last order-lg-first align-items-center justify-content-center justify-content-lg-start">
                     <div>
-                        <span class="text-muted">&copy2021</span> Jordan Hopps | jordanthopps@outlook.com
+                        <span class="text-muted">&copy2021</span> Jordan Hopps | dev.jordanhopps@gmail.com
                     </div>
                 </div>
                 <div class="col d-flex align-items-center justify-content-center justify-content-lg-center">
@@ -108,7 +166,6 @@
                     <div class="row">
                         <div class="col social"><a href="#"><i class="fab fa-linkedin fa-2x"></i></a></div>
                         <div class="col social"><a href="#"><i class="fab fa-github fa-2x"></i></a></div>
-                        <div class="col social"><a href="#"><i class="fab fa-twitter fa-2x"></i></a></div>
                     </div>
                 </div>
             </div>

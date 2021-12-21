@@ -1,6 +1,6 @@
 function getNumbers() {
 
-    let startValue = 0;
+    let startValue = 1;
     let endValue = 100;
 
     //get the numbers from the UI
@@ -12,6 +12,11 @@ function getNumbers() {
     startValue = parseInt(startValue);
     endValue = parseInt(endValue);
 
+    //check to see if they are numbers
+    //Use case: 33 and Davis = True and False = False
+    //0 and 100 - TRUE AND TRUE = TRUE
+    //Bobby and 100 - FALSE AND TRUE = False
+    //We might want to limit the starting balue and ending value | Come back to this
 
     if (Number.isInteger(startValue) && Number.isInteger(endValue)) {
         //when true because both numbers are integers
@@ -21,7 +26,7 @@ function getNumbers() {
         //get the numbers on the page
         displayNumbers(numbers)
     } else {
-        //When false
+        alert("Please enter a number from 1 - 100. Non-integer numbers will be rounded down to the nearest whole integer.")
     }
 }
 
@@ -31,16 +36,6 @@ function generateNumbers(startValue, endValue) {
 
     //Loop over the numbers until we hit the end value
     for (let index = startValue; index <= endValue; index++) {
-
-        /*get the actual number
-        let number = numbers[index];*/
-
-        if (index % 2 == 0) {
-            numbers.push(index).value;
-            tableRow=`<tr><td class="evenDisplay">${index}</td></tr>`;
-        } else {
-            tableRow=`<tr><td>${index}</td></tr>`;
-        }
 
         //Add each number to the array
         numbers.push(index);
@@ -59,36 +54,24 @@ function displayNumbers(numbers) {
     // 0, 1, 2, 3, 4, 5, ....
     let startValue = numbers[0];
     let endIndex = numbers.length;
-
-    let tableBody = document.getElementById("results");
-    let rowTemplate = document.getElementById("fbTemplate");
-
+    let tableBody = document.getElementById("results"); //unclear
     //clear out previous entries from the form:
     tableBody.innerHTML = "";
+    for (let index = 0; index < endIndex; index++) {
 
-    for (let index = 0; index < numbers.length; index += 5) {
+        //get the actual number
+        let number = numbers[index];
 
-        const tableRow = document.importNode(rowTemplate.content, true)
+        if (number % 2 == 0) {
+            //the number is even
+            tableRow = `<tr><td class="evenDisplay">${number}</td></tr>`;
+        } else {
+            //the number is odd
+            tableRow = `<tr><td>${number}</td></tr>`;
+        }
 
-        let rowCols = tableRow.querySelectorAll("td");
 
 
-        rowCols[0].classList.add(numbers[index]);
-        rowCols[0].textContent = numbers[index];
-
-        rowCols[1].classList.add(numbers[index + 1]);
-        rowCols[1].textContent = numbers[index + 1];
-
-        rowCols[2].classList.add(numbers[index + 2]);
-        rowCols[2].textContent = numbers[index + 2];
-
-        rowCols[3].classList.add(numbers[index + 3]);
-        rowCols[3].textContent = numbers[index + 3];
-
-        rowCols[4].classList.add(numbers[index + 4]);
-        rowCols[4].textContent = numbers[index + 4];
-
-        tableBody.appendChild(tableRow);
-
+        tableBody.innerHTML += tableRow;
     }
 }
